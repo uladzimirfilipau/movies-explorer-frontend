@@ -16,7 +16,7 @@ function SearchForm({ handleChange, handleSubmit }) {
           onChange={handleChange}
           required
         />
-        <button className='search-form__button' onSubmit={handleSubmit} />
+        <button className='search-form__button' type='submit' onSubmit={handleSubmit} />
       </form>
 
       <FilterCheckbox />

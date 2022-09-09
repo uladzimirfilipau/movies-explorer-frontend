@@ -25,12 +25,12 @@ function MoviesCard({ nameRU, duration, thumbnail }) {
 
         {pathWithSavedMovies.includes(location.pathname) ? (
           isLike ? (
-            <button className='movie__like_active' onClick={handleDislikeClick} />
+            <button className='movie__like_active' type='submit' onClick={handleDislikeClick} />
           ) : (
-            <button className='movie__like' onClick={handleLikeClick} />
+            <button className='movie__like' type='submit' onClick={handleLikeClick} />
           )
         ) : (
-          <button className='movie__delete' />
+          <button className='movie__delete' type='submit' />
         )}
 
         <a

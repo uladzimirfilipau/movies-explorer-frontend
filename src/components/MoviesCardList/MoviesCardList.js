@@ -15,7 +15,9 @@ function MoviesCardList() {
   return (
     <section className='movies__cards'>
       <ul className='movies__list'>{movieCard}</ul>
-      <button className='movies__button'>Ещё</button>
+      <button className='movies__button' type='button'>
+        Ещё
+      </button>
     </section>
   );
 }

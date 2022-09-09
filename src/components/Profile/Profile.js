@@ -58,12 +58,12 @@ function Profile() {
       </form>
 
       {isEdit ? (
-        <button className='profile__save-button' onClick={handleSaveClick}>
+        <button className='profile__save-button' type='submit' onClick={handleSaveClick}>
           Сохранить
         </button>
       ) : (
         <>
-          <button className='profile__edit-button' onClick={handleEditClick}>
+          <button className='profile__edit-button' type='button' onClick={handleEditClick}>
             Редактировать
           </button>
           <Link to='/' className='profile__logout-link'>
