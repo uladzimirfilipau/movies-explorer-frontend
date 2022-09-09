@@ -20,4 +20,4 @@
 **Ссылки**
 
 - Ссылка на [сгенерированный макет](https://www.figma.com/file/IEnFH5OC4A5JnzFGDGDvr4/Diplom-Vladimir-Filippov?node-id=891%3A3857)
-- Проект будет размещён на сервере по ссылке https://moviesexplorer.vova.nomoredomains.sbs
+- Проект размещён на сервере по ссылке https://moviesexplorer.vova.nomoredomains.sbs
