@@ -20,7 +20,6 @@
 }
 
 .not-found__title {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 140px;
@@ -38,7 +37,6 @@
 }
 
 .not-found__subtitle {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -59,7 +57,7 @@
 
 .not-found__link {
   text-decoration: none;
-  font-family: 'Inter';
+
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
