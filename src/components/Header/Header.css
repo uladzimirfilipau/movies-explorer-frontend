@@ -50,7 +50,6 @@
 }
 
 .header__register-link {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -80,7 +79,6 @@
   padding: 8px 20px;
   box-sizing: border-box;
 
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
