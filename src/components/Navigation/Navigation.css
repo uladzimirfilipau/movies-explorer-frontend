@@ -99,7 +99,6 @@
 }
 
 .menu__link {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -142,7 +141,6 @@
 }
 
 .menu__profile-link {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

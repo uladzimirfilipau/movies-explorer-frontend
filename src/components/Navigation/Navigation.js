@@ -1,60 +1,27 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css';
-import closeButton from '../../images/close.svg';
 
-function Navigation({ isOpen, onClose }) {
+function Navigation() {
   return (
     <>
-      <section className={`menu ${isOpen && 'menu_opened'}`}>
-        {isOpen ? (
-          <img
-            className='menu__close-button'
-            src={closeButton}
-            alt='Закрыть меню'
-            onClick={onClose}
-          />
-        ) : null}
-
+      <section className='menu'>
         <nav className='menu__content'>
           <ul className='menu__links'>
-            {isOpen ? (
-              <li>
-                <NavLink
-                  exact
-                  to='/'
-                  className='menu__link'
-                  activeClassName='menu__link_active'
-                  onClick={onClose}
-                >
-                  Главная
-                </NavLink>
-              </li>
-            ) : null}
             <li>
-              <NavLink
-                to='/movies'
-                className='menu__link'
-                activeClassName='menu__link_active '
-                onClick={onClose}
-              >
+              <NavLink to='/movies' className='menu__link'>
                 Фильмы
               </NavLink>
             </li>
 
             <li>
-              <NavLink
-                to='/saved-movies'
-                className='menu__link'
-                activeClassName='menu__link_active'
-                onClick={onClose}
-              >
+              <NavLink to='/saved-movies' className='menu__link'>
                 Сохранённые фильмы
               </NavLink>
             </li>
           </ul>
 
-          <Link to='/profile' className='menu__profile-link' onClick={onClose}>
+          <Link to='/profile' className='menu__profile-link'>
             Аккаунт
           </Link>
         </nav>
