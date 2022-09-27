@@ -14,26 +14,34 @@ function AboutMe() {
           <p className='about__profile'>Фронтенд-разработчик, 39 лет</p>
 
           <p className='about__description'>
-            С ноября 2021 года начал учиться в Яндекс.Практикуме на курсе "Веб-разработчик". Успешно
-            прошёл все этапы обучения:
+            С&nbsp;ноября 2021 года начал учиться в&nbsp;Яндекс.Практикуме на&nbsp;курсе
+            &laquo;Веб-разработчик&raquo;. Успешно прошёл все этапы обучения:
           </p>
-          <p className='about__description'>- HTML, CSS, JavaScript: вводный модуль</p>
-          <p className='about__description'>- Расширенные возможности HTML и CSS</p>
-          <p className='about__description'>- Адаптивная вёрстка и работа с макетом</p>
-          <p className='about__description'>- Базовый JavaScript и работа с браузером</p>
-          <p className='about__description'>- JavaScript — непростые концепции</p>
-          <p className='about__description'>- Интерфейсы с использованием React</p>
-          <p className='about__description'>- Основы бэкенда для фронтенд-разработчиков</p>
+          <p className='about__description'>&mdash;&nbsp;HTML, CSS, JavaScript: вводный модуль</p>
+          <p className='about__description'>&mdash;&nbsp;Расширенные возможности HTML и&nbsp;CSS</p>
+          <p className='about__description'>
+            &mdash;&nbsp;Адаптивная вёрстка и&nbsp;работа с&nbsp;макетом
+          </p>
+          <p className='about__description'>
+            &mdash;&nbsp;Базовый JavaScript и&nbsp;работа с&nbsp;браузером
+          </p>
+          <p className='about__description'>
+            &mdash;&nbsp;JavaScript&nbsp;&mdash; непростые концепции
+          </p>
+          <p className='about__description'>&mdash;&nbsp;Интерфейсы с&nbsp;использованием React</p>
+          <p className='about__description'>
+            &mdash;&nbsp;Основы бэкенда для фронтенд-разработчиков
+          </p>
 
           <ul className='about__links'>
             <li>
               <a
                 className='about__link'
-                href='https://www.facebook.com'
+                href='https://vk.com'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                Facebook
+                VK
               </a>
             </li>
             <li>
