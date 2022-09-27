@@ -1,8 +1,6 @@
 .profile {
-  max-width: 410px;
-  margin: 0 auto;
-  padding-top: 74px;
-  padding-bottom: 70px;
+  margin: 0;
+  padding: 74px 0 70px;
   box-sizing: border-box;
 
   display: grid;
@@ -17,59 +15,58 @@
 
 @media screen and (max-width: 767px) {
   .profile {
-    padding: 70px 30px 40px;
+    padding: 70px 0 40px;
   }
 }
 
 .profile__title {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
   text-align: center;
+
   color: #fff;
-  margin: 0;
-}
-
-.profile__form {
-  width: 100%;
-  margin: 123px 0 220px;
-  padding: 0;
-
-  display: grid;
-  gap: 17px;
+  margin: 0 0 123px;
 }
 
 @media screen and (max-width: 1279px) {
-  .profile__form {
-    margin: 96px 0 210px;
+  .profile__title {
+    margin: 0 0 96px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .profile__form {
-    margin: 80px 0 379px;
+  .profile__title {
+    margin: 0 0 80px;
   }
 }
 
 .profile__fildset {
+  width: 410px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border: none;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__fildset {
+    width: 260px;
+  }
 }
 
 .profile__fildset:first-of-type {
   border-bottom: 1px solid #424242;
-  padding-bottom: 16px;
+  padding: 0 0 16px;
+  margin: 0 0 17px;
 }
 
 .profile__label {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -79,7 +76,6 @@
 }
 
 .profile__input {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -97,14 +93,13 @@
 }
 
 .profile__edit-button {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
   color: #fff;
-  margin: 0;
+  margin: 220px 0 0;
   padding: 0;
 
   background-color: transparent;
@@ -112,10 +107,17 @@
   transition: opacity 0.2s linear;
 }
 
+@media screen and (max-width: 1279px) {
+  .profile__edit-button {
+    margin: 210px 0 0;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .profile__edit-button {
     font-size: 12px;
     line-height: 15px;
+    margin: 379px 0 0;
   }
 }
 
@@ -124,42 +126,65 @@
   cursor: pointer;
 }
 
+.profile__edit-button_disabled:hover {
+  opacity: 1;
+  cursor: auto;
+}
+
 .profile__save-button {
-  width: 100%;
-  background: #4285f4;
+  width: 410px;
   border: none;
   border-radius: 3px;
-  margin: 0;
+  margin: 220px 0 0;
   padding: 14px 0;
   box-sizing: border-box;
 
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #fff;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__save-button {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 210px 0 0;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .profile__save-button {
+    width: 260px;
     font-size: 12px;
     line-height: 15px;
+    margin: 379px 0 0;
   }
 }
 
-.profile__save-button:hover {
+.profile__save-button_enabled {
+  color: #fff;
+  background: #4285f4;
+}
+
+.profile__save-button_enabled:hover {
   opacity: 0.7;
   cursor: pointer;
 }
 
+.profile__save-button_disabled {
+  box-sizing: border-box;
+  background: #f8f8f8;
+  color: #c2c2c2;
+}
+
 .profile__logout-link {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
+
   color: #ee3465;
   text-decoration: none;
   margin: 16px 0 0;
