@@ -50,6 +50,6 @@
 
 **Ссылки**
 
-- Пул реквест https://github.com/uladzimirfilipau/movies-explorer-frontend
+- Пул реквест https://github.com/uladzimirfilipau/movies-explorer-frontend/pull/2
 - Ссылка на [сгенерированный макет](https://www.figma.com/file/IEnFH5OC4A5JnzFGDGDvr4/Diplom-Vladimir-Filippov?node-id=891%3A3857)
 - Проект размещён на сервере и доступен по ссылке https://moviesexplorer.vova.nomoredomains.sbs
