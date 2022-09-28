@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
 import isEmail from 'validator/lib/isEmail';
 
+import { WRONG_NAME, WRONG_EMAIL } from '../utils/consts';
+
 function useFormAndValidation() {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -11,7 +13,7 @@ function useFormAndValidation() {
     const { name, value } = input;
 
     if (name === 'name' && input.validity.patternMismatch) {
-      input.setCustomValidity('Используйте только латиницу, кириллицу, пробел или дефис');
+      input.setCustomValidity(WRONG_NAME);
     } else {
       input.setCustomValidity('');
     }
@@ -20,7 +22,7 @@ function useFormAndValidation() {
       if (isEmail(value)) {
         input.setCustomValidity('');
       } else {
-        input.setCustomValidity('Некорректный email');
+        input.setCustomValidity(WRONG_EMAIL);
       }
     }
 

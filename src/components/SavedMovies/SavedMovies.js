@@ -4,6 +4,7 @@ import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../../components/Preloader/Preloader';
+import { SHORT_MOVIE_DURATION } from '../../utils/consts';
 
 function SavedMovies({ userMovies, handleDeleteMovie }) {
   const [submitted, setSubmitted] = useState(false);
@@ -25,7 +26,7 @@ function SavedMovies({ userMovies, handleDeleteMovie }) {
         return movieName.includes(searchTerm.toLowerCase());
       });
 
-      if (searchResults < 1) {
+      if (searchResults.length < 1) {
         setFound(false);
       } else {
         setFindMovies(searchResults);
@@ -42,7 +43,7 @@ function SavedMovies({ userMovies, handleDeleteMovie }) {
   useEffect(() => {
     if (checked) {
       const shortMovies = findMovies.filter((movie) => {
-        return movie.duration <= 40;
+        return movie.duration <= SHORT_MOVIE_DURATION;
       });
 
       setShortMovies(shortMovies);

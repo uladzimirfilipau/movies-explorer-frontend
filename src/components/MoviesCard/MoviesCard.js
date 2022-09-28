@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './MoviesCard.css';
-import { API_URL } from '../../utils/consts';
+import { API_URL, getTimeFromMins } from '../../utils/consts';
 
 function MoviesCard({ movie, savedMovies, handleSaveMovie, handleDeleteMovie }) {
   const location = useLocation();
@@ -12,12 +12,6 @@ function MoviesCard({ movie, savedMovies, handleSaveMovie, handleDeleteMovie }) 
 
   const savedMovie = savedMovies.find((i) => i.movieId === movie.id);
   const likeButtonClassName = `movie__like ${savedMovie && 'movie__like_active'}`;
-
-  const getTimeFromMins = (mins) => {
-    let hours = Math.trunc(mins / 60);
-    let minutes = mins % 60;
-    return hours + 'ч ' + minutes + 'м';
-  };
 
   function handleToogleClick() {
     if (savedMovie) {

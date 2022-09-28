@@ -6,6 +6,17 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../../components/Preloader/Preloader';
+import {
+  KEYWORD_ERROR,
+  SHORT_MOVIE_DURATION,
+  FULL_SCREEN,
+  MEDIUM_SCREEN,
+  TWELVE_MOVIES,
+  EIGHT_MOVIES,
+  FIVE_MOVIES,
+  THREE_MOVIES,
+  TWO_MOVIES,
+} from '../../utils/consts';
 
 function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
   const [submitted, setSubmitted] = useState(false);
@@ -16,17 +27,17 @@ function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
   const [shortMovies, setShortMovies] = useState([]);
   const [found, setFound] = useState(true);
   const width = useWindowWidth();
-  const [index, setIndex] = useState(12);
+  const [index, setIndex] = useState(TWELVE_MOVIES);
 
   useEffect(() => {
-    if (width >= 1280) {
-      setIndex(12);
+    if (width >= FULL_SCREEN) {
+      setIndex(TWELVE_MOVIES);
     }
-    if (width < 1280 && width >= 768) {
-      setIndex(8);
+    if (width < FULL_SCREEN && width >= MEDIUM_SCREEN) {
+      setIndex(EIGHT_MOVIES);
     }
-    if (width < 768) {
-      setIndex(5);
+    if (width < MEDIUM_SCREEN) {
+      setIndex(FIVE_MOVIES);
     }
   }, [width]);
 
@@ -37,7 +48,7 @@ function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
         return movieName.includes(searchTerm.toLowerCase());
       });
 
-      if (searchResults < 1) {
+      if (searchResults.length < 1) {
         setFound(false);
       } else {
         setFindMovies(searchResults);
@@ -54,7 +65,7 @@ function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
   useEffect(() => {
     if (checked) {
       const shortMovies = findMovies.filter((movie) => {
-        return movie.duration <= 40;
+        return movie.duration <= SHORT_MOVIE_DURATION;
       });
 
       setShortMovies(shortMovies);
@@ -67,7 +78,7 @@ function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    searchTerm ? setSubmitted(true) : setError('Нужно ввести ключевое слово');
+    searchTerm ? setSubmitted(true) : setError(KEYWORD_ERROR);
   }
 
   function handleToogleCheck() {
@@ -75,10 +86,10 @@ function Movies({ allMovies, userMovies, handleSaveMovie, handleDeleteMovie }) {
   }
 
   function handleMoreMovies() {
-    if (width >= 1280) {
-      setIndex(index + 3);
+    if (width >= FULL_SCREEN) {
+      setIndex(index + THREE_MOVIES);
     } else {
-      setIndex(index + 2);
+      setIndex(index + TWO_MOVIES);
     }
   }
 
