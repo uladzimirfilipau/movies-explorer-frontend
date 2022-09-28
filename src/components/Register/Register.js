@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
@@ -6,7 +6,6 @@ import { NAME } from '../../utils/consts';
 
 function Register({ onRegister }) {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const [isSubmit, setIsSubmit] = useState(false);
   const registerButtonClassName = `register__button ${
     isValid ? 'register__button_enabled' : 'register__button_disabled'
   }`;
@@ -14,7 +13,6 @@ function Register({ onRegister }) {
   function handleSubmit(e) {
     e.preventDefault();
     onRegister(values);
-    setIsSubmit(true);
   }
 
   return (
@@ -67,7 +65,7 @@ function Register({ onRegister }) {
       />
       <span className='register__input-error'>{errors.password}</span>
 
-      <button className={registerButtonClassName} type='submit' disabled={!isValid || isSubmit}>
+      <button className={registerButtonClassName} type='submit' disabled={!isValid}>
         Зарегистрироваться
       </button>
 

@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
 function Login({ onLogin }) {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const [isSubmit, setIsSubmit] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     onLogin(values);
-    setIsSubmit(true);
   }
 
   return (
@@ -50,7 +48,7 @@ function Login({ onLogin }) {
       <button
         className={`login__button ${isValid ? 'login__button_enabled' : 'login__button_disabled'}`}
         type='submit'
-        disabled={!isValid || isSubmit}
+        disabled={!isValid}
       >
         Войти
       </button>
