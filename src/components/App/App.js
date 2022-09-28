@@ -19,7 +19,18 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 import * as api from '../../utils/MainApi';
 import * as moviesApi from '../../utils/MoviesApi';
-import { handleError } from '../../utils/consts';
+import {
+  handleError,
+  REQUEST_ERROR,
+  CONFLICT_ERR_MESSAGE,
+  BAD_REQ_ERR_MESSAGE,
+  WRONG_DATA_ERR_MESSAGE,
+  AUTH_ERR_MESSAGE,
+  NOT_UPDATE_ERR_MESSAGE,
+  UPDATE_MESSAGE,
+  SERVER_ERROR,
+  AUTH_ERROR,
+} from '../../utils/consts';
 
 function App() {
   const history = useHistory();
@@ -44,10 +55,20 @@ function App() {
         .checkToken(token)
         .then(({ name, email }) => {
           setCurrentUser({ name, email });
+          setLoggedIn(true);
         })
-        .catch(handleError);
+        .catch((err) => {
+          setIsInfoTooltipOpen(true);
+          if (err.includes(401)) {
+            setMessage(AUTH_ERROR);
+            setLoggedIn(false);
+            localStorage.clear();
+          } else {
+            handleError();
+          }
+        });
     }
-  }, [loggedIn]);
+  }, [setLoggedIn]);
 
   // GET ALL MOVIES
   useEffect(() => {
@@ -60,9 +81,7 @@ function App() {
         .catch((err) => {
           setIsInfoTooltipOpen(true);
           if (err) {
-            setMessage(
-              'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
-            );
+            setMessage(REQUEST_ERROR);
           }
         });
     }
@@ -114,11 +133,11 @@ function App() {
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         if (err.includes(409)) {
-          setMessage('Пользователь с таким email уже существует');
+          setMessage(CONFLICT_ERR_MESSAGE);
         } else if (err.includes(400)) {
-          setMessage('При регистрации пользователя произошла ошибка');
+          setMessage(BAD_REQ_ERR_MESSAGE);
         } else {
-          setMessage('Ошибка сервера');
+          setMessage(SERVER_ERROR);
         }
       });
   }
@@ -138,11 +157,11 @@ function App() {
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         if (err.includes(401)) {
-          setMessage('Вы ввели неверный логин или пароль');
+          setMessage(WRONG_DATA_ERR_MESSAGE);
         } else if (err.includes(400)) {
-          setMessage('При авторизации пользователя произошла ошибка');
+          setMessage(AUTH_ERR_MESSAGE);
         } else {
-          setMessage('Ошибка сервера');
+          setMessage(SERVER_ERROR);
         }
       });
   }
@@ -164,11 +183,17 @@ function App() {
       .then((newData) => {
         setCurrentUser(newData);
         setIsInfoTooltipOpen(true);
-        setMessage('Данные профиля успешно обновлены!');
+        setMessage(UPDATE_MESSAGE);
       })
-      .catch(() => {
+      .catch((err) => {
         setIsInfoTooltipOpen(true);
-        setMessage('При обновлении профиля произошла ошибка');
+        if (err.includes(401)) {
+          setMessage(AUTH_ERROR);
+          setLoggedIn(false);
+          localStorage.clear();
+        } else {
+          setMessage(NOT_UPDATE_ERR_MESSAGE);
+        }
       });
   }
 
@@ -179,7 +204,16 @@ function App() {
       .then((newMovie) => {
         setUserMovies([newMovie, ...userMovies]);
       })
-      .catch(handleError);
+      .catch((err) => {
+        setIsInfoTooltipOpen(true);
+        if (err.includes(401)) {
+          setMessage(AUTH_ERROR);
+          setLoggedIn(false);
+          localStorage.clear();
+        } else {
+          handleError();
+        }
+      });
   }
 
   // DELETE MOVIE
@@ -191,10 +225,19 @@ function App() {
         const newUserMovies = userMovies.filter((i) => i._id !== movieId && i);
         setUserMovies(newUserMovies);
       })
-      .catch(handleError);
+      .catch((err) => {
+        setIsInfoTooltipOpen(true);
+        if (err.includes(401)) {
+          setMessage(AUTH_ERROR);
+          setLoggedIn(false);
+          localStorage.clear();
+        } else {
+          handleError();
+        }
+      });
   }
 
-  // OPEN POPUPS
+  // OPEN MENU
   function handleMenuOpen() {
     setIsMenuOpen(true);
   }
@@ -223,11 +266,11 @@ function App() {
           <Route exact path='/' component={Main} />
 
           <Route path='/signup'>
-            <Register onRegister={handleRegister} />
+            {loggedIn ? <Redirect to='/' /> : <Register onRegister={handleRegister} />}
           </Route>
 
           <Route path='/signin'>
-            <Login onLogin={handleLogin} />
+            {loggedIn ? <Redirect to='/' /> : <Login onLogin={handleLogin} />}
           </Route>
 
           <ProtectedRoute
