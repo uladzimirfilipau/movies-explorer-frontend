@@ -58,8 +58,8 @@ function App() {
           setLoggedIn(true);
         })
         .catch((err) => {
-          setIsInfoTooltipOpen(true);
           if (err.includes(401)) {
+            setIsInfoTooltipOpen(true);
             setMessage(AUTH_ERROR);
             setLoggedIn(false);
             localStorage.clear();
@@ -80,12 +80,16 @@ function App() {
         })
         .catch((err) => {
           setIsInfoTooltipOpen(true);
-          if (err) {
+          if (err.includes(401)) {
+            setMessage(AUTH_ERROR);
+            setLoggedIn(false);
+            localStorage.clear();
+          } else {
             setMessage(REQUEST_ERROR);
           }
         });
     }
-  }, [loggedIn, allMovies, setAllMovies]);
+  }, [loggedIn, allMovies, setAllMovies, setLoggedIn]);
 
   // GET SAVED MOVIES
   useEffect(() => {
@@ -95,9 +99,18 @@ function App() {
         .then((data) => {
           setUserMovies(data);
         })
-        .catch(handleError);
+        .catch((err) => {
+          if (err.includes(401)) {
+            setIsInfoTooltipOpen(true);
+            setMessage(AUTH_ERROR);
+            setLoggedIn(false);
+            localStorage.clear();
+          } else {
+            handleError();
+          }
+        });
     }
-  }, [loggedIn, setUserMovies]);
+  }, [loggedIn, setUserMovies, setLoggedIn]);
 
   // HANDLE CLOSE
   useEffect(() => {
@@ -205,8 +218,8 @@ function App() {
         setUserMovies([newMovie, ...userMovies]);
       })
       .catch((err) => {
-        setIsInfoTooltipOpen(true);
         if (err.includes(401)) {
+          setIsInfoTooltipOpen(true);
           setMessage(AUTH_ERROR);
           setLoggedIn(false);
           localStorage.clear();
@@ -226,8 +239,8 @@ function App() {
         setUserMovies(newUserMovies);
       })
       .catch((err) => {
-        setIsInfoTooltipOpen(true);
         if (err.includes(401)) {
+          setIsInfoTooltipOpen(true);
           setMessage(AUTH_ERROR);
           setLoggedIn(false);
           localStorage.clear();
