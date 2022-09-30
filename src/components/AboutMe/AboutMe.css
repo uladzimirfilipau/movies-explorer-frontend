@@ -15,7 +15,6 @@
 }
 
 .about__title {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -67,7 +66,6 @@
 }
 
 .about__name {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 50px;
@@ -85,7 +83,6 @@
 }
 
 .about__profile {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -110,7 +107,6 @@
 }
 
 .about__description {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -145,7 +141,6 @@
 
 .about__link {
   text-decoration: none;
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

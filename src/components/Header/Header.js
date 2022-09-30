@@ -1,25 +1,15 @@
-import { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import burgerMenu from '../../images/burger-menu.svg';
 import Navigation from '../Navigation/Navigation';
 
-function Header({ loggedIn }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  function handleMenuOpen() {
-    setIsMenuOpen(true);
-  }
-
-  function handleMenuClose() {
-    setIsMenuOpen(false);
-  }
-
+function Header({ loggedIn, handleMenuOpen }) {
   return loggedIn ? (
     <header className='header'>
       <Link to='/' className='header__logo' />
 
-      <Navigation isOpen={isMenuOpen} onClose={handleMenuClose} />
+      <Navigation />
 
       <img
         className='header__burger-menu'

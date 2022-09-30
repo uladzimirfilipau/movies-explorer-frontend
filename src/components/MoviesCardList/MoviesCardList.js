@@ -1,23 +1,47 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { initialImages } from '../../utils/const';
 
-function MoviesCardList() {
-  const movieCard = initialImages.map(({ thumbnail }) => (
-    <MoviesCard
-      key={thumbnail.toString()}
-      nameRU={'33 слова о дизайне'}
-      duration={'1ч 47м'}
-      thumbnail={thumbnail}
-    />
-  ));
+function MoviesCardList({
+  movies,
+  savedMovies,
+  index,
+  handleMoreMovies,
+  handleSaveMovie,
+  handleDeleteMovie,
+}) {
+  const location = useLocation();
+  const pathWithMovies = location.pathname === '/movies';
+
+  let renderCards = movies.slice(0, index);
+  const elseButton = movies.length > 0 && movies.length > index;
+
   return (
-    <section className='movies__cards'>
-      <ul className='movies__list'>{movieCard}</ul>
-      <button className='movies__button' type='button'>
-        Ещё
-      </button>
+    <section className='movies__cards' aria-label='Фильмы'>
+      <ul className='movies__list'>
+        {renderCards.map((movie) => (
+          <MoviesCard
+            key={movie.id || movie._id}
+            movie={movie}
+            savedMovies={savedMovies}
+            handleSaveMovie={handleSaveMovie}
+            handleDeleteMovie={handleDeleteMovie}
+          />
+        ))}
+      </ul>
+
+      {pathWithMovies && elseButton && (
+        <button
+          className='movies__button'
+          type='button'
+          aria-label='Ещё фильмы'
+          onClick={handleMoreMovies}
+        >
+          Ещё
+        </button>
+      )}
     </section>
   );
 }

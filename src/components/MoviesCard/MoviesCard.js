@@ -1,44 +1,68 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 import './MoviesCard.css';
+import { API_URL, getTimeFromMins } from '../../utils/consts';
 
-function MoviesCard({ nameRU, duration, thumbnail }) {
+function MoviesCard({ movie, savedMovies, handleSaveMovie, handleDeleteMovie }) {
   const location = useLocation();
-  const pathWithSavedMovies = ['/movies'];
-  const [isLike, setIsLike] = useState(false);
+  const pathWithMovies = ['/movies'];
+  const pathMovies = pathWithMovies.includes(location.pathname);
+  const imgUrl = pathMovies ? `${API_URL}${movie.image.url}` : `${movie.image}`;
 
-  function handleLikeClick() {
-    setIsLike(true);
+  const savedMovie = savedMovies.find((i) => i.movieId === movie.id);
+  const likeButtonClassName = `movie__like ${savedMovie && 'movie__like_active'}`;
+
+  function handleToogleClick() {
+    if (savedMovie) {
+      handleDeleteMovie(savedMovie);
+    } else {
+      handleSaveMovie(movie);
+    }
   }
 
-  function handleDislikeClick() {
-    setIsLike(false);
+  function handleDeleteClick() {
+    handleDeleteMovie(movie);
   }
 
   return (
     <li className='movie'>
       <figure className='movie__figure'>
         <figcaption className='movie__figure-caption'>
-          <h2 className='movie__title'>{nameRU}</h2>
-          <p className='movie__duration'>{duration}</p>
+          <h2 title={movie.nameRU} className='movie__title'>
+            {movie.nameRU}
+          </h2>
+          <p className='movie__duration'>{getTimeFromMins(movie.duration)}</p>
         </figcaption>
 
-        {pathWithSavedMovies.includes(location.pathname) ? (
-          isLike ? (
-            <button className='movie__like_active' type='submit' onClick={handleDislikeClick} />
-          ) : (
-            <button className='movie__like' type='submit' onClick={handleLikeClick} />
-          )
+        {pathMovies ? (
+          <button
+            className={likeButtonClassName}
+            type='submit'
+            aria-label={
+              savedMovie
+                ? 'Удалить фильм из сохранённых фильмов'
+                : 'Добавить фильм в сохранённые фильмы'
+            }
+            onClick={handleToogleClick}
+          />
         ) : (
-          <button className='movie__delete' type='submit' />
+          <button
+            className='movie__delete'
+            type='submit'
+            aria-label='Удалить фильм из сохранённых фильмов'
+            onClick={handleDeleteClick}
+          />
         )}
 
         <a
-          href='https://www.youtube.com/watch?v=JORGN8rUjyQ'
+          href={movie.trailerLink}
           target='_blank'
+          className='movie__link'
+          aria-label='Посмотреть трейлер фильма'
           rel='noopener noreferrer'
         >
-          <img src={thumbnail} alt={nameRU} className='movie__image' />
+          <img src={imgUrl} alt={movie.nameRU} className='movie__image' />
         </a>
       </figure>
     </li>

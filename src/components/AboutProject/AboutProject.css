@@ -15,7 +15,6 @@
 }
 
 .about-project__title {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -65,7 +64,6 @@
 }
 
 .about-project__subtitle {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -84,7 +82,6 @@
 }
 
 .about-project__text {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -127,7 +124,6 @@
 }
 
 .about-project__line {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

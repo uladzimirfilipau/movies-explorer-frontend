@@ -16,7 +16,6 @@
 }
 
 .portfolio__title {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -67,7 +66,7 @@
   box-sizing: border-box;
 
   text-decoration: none;
-  font-family: 'Inter';
+
   font-style: normal;
   font-weight: 400;
   font-size: 30px;

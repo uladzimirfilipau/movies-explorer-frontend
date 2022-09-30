@@ -16,3 +16,13 @@
     padding: 80px 10px 0;
   }
 }
+
+.movies__not-found {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+  text-align: center;
+  margin: 20px 0 0;
+}
