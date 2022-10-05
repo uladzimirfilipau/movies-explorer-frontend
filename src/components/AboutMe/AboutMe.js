@@ -37,11 +37,11 @@ function AboutMe() {
             <li>
               <a
                 className='about__link'
-                href='https://vk.com'
+                href='https://career.habr.com/vladimir_filippov'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                VK
+                Хабр Карьера
               </a>
             </li>
             <li>
