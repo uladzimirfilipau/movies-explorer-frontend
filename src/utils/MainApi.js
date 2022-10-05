@@ -1,5 +1,4 @@
 import { MAIN_URL, API_URL } from '../utils/consts';
-import isUrl from 'validator/lib/isURL';
 
 const getRes = (res) => {
   if (res.ok) {
@@ -82,7 +81,7 @@ export const addMovie = (data) => {
       year: data.year,
       description: data.description,
       image: `${API_URL}${data.image.url}`,
-      trailerLink: isUrl ? data.trailerLink : `${YOUTUBE}${data.nameRU}`,
+      trailerLink: data.trailerLink,
       thumbnail: `${API_URL}${data.image.formats.thumbnail.url}`,
       nameRU: data.nameRU,
       nameEN: data.nameEN,
