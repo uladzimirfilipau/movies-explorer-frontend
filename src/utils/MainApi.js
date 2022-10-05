@@ -1,4 +1,5 @@
-import { MAIN_URL, API_URL } from '../utils/consts';
+import { MAIN_URL, API_URL, YOUTUBE } from '../utils/consts';
+import isUrl from 'validator/lib/isURL';
 
 const getRes = (res) => {
   if (res.ok) {
@@ -8,7 +9,6 @@ const getRes = (res) => {
   }
 };
 
-// регистрация
 export const register = ({ email, password, name }) => {
   return fetch(`${MAIN_URL}/signup`, {
     method: 'POST',
@@ -20,7 +20,6 @@ export const register = ({ email, password, name }) => {
   }).then(getRes);
 };
 
-// логин
 export const login = ({ email, password }) => {
   return fetch(`${MAIN_URL}/signin`, {
     method: 'POST',
@@ -31,7 +30,6 @@ export const login = ({ email, password }) => {
   }).then(getRes);
 };
 
-// получить токен
 export const checkToken = (token) => {
   return fetch(`${MAIN_URL}/users/me`, {
     headers: {
@@ -50,14 +48,12 @@ const getHeaders = () => {
   };
 };
 
-// получить информацию о пользователе (email и имя)
 export const getUserData = () => {
   return fetch(`${MAIN_URL}/users/me`, {
     headers: getHeaders(),
   }).then(getRes);
 };
 
-// обновить информацию о пользователе (email и имя)
 export const editUserData = ({ name, email }) => {
   return fetch(`${MAIN_URL}/users/me`, {
     method: 'PATCH',
@@ -69,14 +65,12 @@ export const editUserData = ({ name, email }) => {
   }).then(getRes);
 };
 
-// получить сохранённые текущим пользователем фильмы
 export const getSavedMovies = () => {
   return fetch(`${MAIN_URL}/movies`, {
     headers: getHeaders(),
   }).then(getRes);
 };
 
-// добавить фильм в сохранённые текущим пользователем фильмы
 export const addMovie = (data) => {
   return fetch(`${MAIN_URL}/movies`, {
     method: 'POST',
@@ -88,7 +82,7 @@ export const addMovie = (data) => {
       year: data.year,
       description: data.description,
       image: `${API_URL}${data.image.url}`,
-      trailerLink: data.trailerLink,
+      trailerLink: isUrl ? data.trailerLink : `${YOUTUBE}${data.nameRU}`,
       thumbnail: `${API_URL}${data.image.formats.thumbnail.url}`,
       nameRU: data.nameRU,
       nameEN: data.nameEN,
@@ -97,7 +91,6 @@ export const addMovie = (data) => {
   }).then(getRes);
 };
 
-// удалить фильм по id из сохранённых текущим пользователем фильмов
 export const deleteSavedMovie = (movieId) => {
   return fetch(`${MAIN_URL}/movies/${movieId}`, {
     method: 'DELETE',

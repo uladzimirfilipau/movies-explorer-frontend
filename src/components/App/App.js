@@ -47,7 +47,6 @@ function App() {
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  // CHECK TOKEN
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -70,7 +69,6 @@ function App() {
     }
   }, [setLoggedIn]);
 
-  // GET ALL MOVIES
   useEffect(() => {
     if (loggedIn && allMovies.length < 1) {
       moviesApi
@@ -91,7 +89,6 @@ function App() {
     }
   }, [loggedIn, allMovies, setAllMovies, setLoggedIn]);
 
-  // GET SAVED MOVIES
   useEffect(() => {
     if (loggedIn) {
       api
@@ -112,7 +109,6 @@ function App() {
     }
   }, [loggedIn, setUserMovies, setLoggedIn]);
 
-  // HANDLE CLOSE
   useEffect(() => {
     function handleEscClose(e) {
       const ESC_CODE = 'Escape';
@@ -136,7 +132,6 @@ function App() {
     };
   });
 
-  // REGISTER
   function handleRegister({ email, password, name }) {
     api
       .register({ email, password, name })
@@ -155,7 +150,6 @@ function App() {
       });
   }
 
-  // LOGIN
   function handleLogin({ email, password }) {
     api
       .login({ email, password })
@@ -179,7 +173,6 @@ function App() {
       });
   }
 
-  // GET USERDATA
   function getUserData() {
     api
       .getUserData()
@@ -189,7 +182,6 @@ function App() {
       .catch(handleError);
   }
 
-  // UPDATE USERDATA
   function handleUpdateUser(data) {
     api
       .editUserData(data)
@@ -210,7 +202,6 @@ function App() {
       });
   }
 
-  // SAVE MOVIE
   function handleSaveMovie(movie) {
     api
       .addMovie(movie)
@@ -229,7 +220,6 @@ function App() {
       });
   }
 
-  // DELETE MOVIE
   function handleDeleteMovie(movie) {
     const movieId = movie._id;
     api
@@ -250,18 +240,15 @@ function App() {
       });
   }
 
-  // OPEN MENU
   function handleMenuOpen() {
     setIsMenuOpen(true);
   }
 
-  // CLOSE POPUPS
   function closeAllPopups() {
     setIsMenuOpen(false);
     setIsInfoTooltipOpen(false);
   }
 
-  // SIGNOUT
   function handleSignOut() {
     setLoggedIn(false);
     localStorage.clear();
