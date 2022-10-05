@@ -1,4 +1,4 @@
-import { MAIN_URL, API_URL, YOUTUBE } from '../utils/consts';
+import { MAIN_URL, API_URL } from '../utils/consts';
 import isUrl from 'validator/lib/isURL';
 
 const getRes = (res) => {
