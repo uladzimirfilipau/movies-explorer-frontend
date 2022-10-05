@@ -58,6 +58,3 @@
 - Установить зависимости в корневой директории проекта с помощью команды: `npm i`
 - Запустить frontend часть приложения на 3000 порту: `npm start`
 - Для полноценной работы приложения необходимо запустить [бэкенд](https://github.com/uladzimirfilipau/movies-explorer-api)
-
-## Ссылки
-Ссылка на [макет](https://www.figma.com/file/IEnFH5OC4A5JnzFGDGDvr4/Diplom-Vladimir-Filippov?node-id=891%3A3857)
