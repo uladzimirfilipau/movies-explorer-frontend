@@ -54,7 +54,7 @@ The site consists of several pages:
 - The card block contains a delete button. When you click on the delete button, a request is made to delete the movie. After a successful request, the card is removed from the page.
 
 ## Project launch
-- Clone repository: `git clone https://github.com/uladzimirfilipau/movies-explorer-frontend .git`
+- Clone repository: `git clone https://github.com/uladzimirfilipau/movies-explorer-frontend.git`
 - Install dependencies in the root directory of the project using the command: `npm i`
 - Run the frontend part of the application on port 3000: `npm start`
 - For the full operation of the application, you need to run [backend](https://github.com/uladzimirfilipau/movies-explorer-api)
