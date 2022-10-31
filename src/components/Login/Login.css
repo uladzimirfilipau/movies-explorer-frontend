@@ -1,5 +1,6 @@
 .login {
   max-width: 396px;
+  width: 100%;
   margin: 0 auto;
   padding: 70px 0;
   box-sizing: border-box;
@@ -137,22 +138,6 @@
   background: #f8f8f8;
   color: #c2c2c2;
 }
-
-/* .login__button_error::before {
-  content: 'На сервере произошла ошибка';
-  position: absolute;
-  top: -34px;
-  left: 0;
-  right: 0;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-
-  color: #ff004c;
-  height: 14px;
-} */
 
 .login__caption {
   font-style: normal;
