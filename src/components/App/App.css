@@ -4,5 +4,10 @@
   background: #202020;
   font-family: Inter, Arial, sans-serif;
   margin: 0 auto;
+}
+
+.root {
   display: grid;
+  grid-template-rows: min-content;
+  height: 100vh;
 }

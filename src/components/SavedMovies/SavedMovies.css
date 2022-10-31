@@ -1,9 +1,6 @@
 .saved-movies {
-  margin: 0 auto;
   padding: 70px 70px 0;
   box-sizing: border-box;
-
-  display: grid;
 }
 
 @media screen and (max-width: 1279px) {

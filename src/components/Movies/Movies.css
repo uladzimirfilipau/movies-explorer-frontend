@@ -1,8 +1,6 @@
 .movies {
   padding: 70px 70px 0;
   box-sizing: border-box;
-
-  display: grid;
 }
 
 @media screen and (max-width: 1279px) {
@@ -24,5 +22,5 @@
   line-height: 18px;
   color: #fff;
   text-align: center;
-  margin: 20px 0 0;
+  margin: 0;
 }
