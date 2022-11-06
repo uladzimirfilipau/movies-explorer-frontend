@@ -2,7 +2,7 @@
   "name": "movies-explorer-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://moviesexplorer.vova.nomoredomains.sbs/",
+  "homepage": "https://movie-explorer-vova.netlify.app/",
   "devDependencies": {
     "react-scripts": "^5.0.1"
   },
@@ -19,8 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* vova@158.160.5.222:/home/vova/movies-explorer-frontend"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
