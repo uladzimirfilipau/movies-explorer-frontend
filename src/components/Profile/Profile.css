@@ -55,6 +55,7 @@
   border: none;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 767px) {
@@ -129,16 +130,11 @@
   cursor: pointer;
 }
 
-.profile__edit-button_disabled:hover {
-  opacity: 1;
-  cursor: auto;
-}
-
 .profile__save-button {
   width: 410px;
   border: none;
   border-radius: 3px;
-  margin: 220px 0 0;
+  margin: 224px 0 0;
   padding: 14px 0;
   box-sizing: border-box;
 
@@ -146,6 +142,9 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  color: #fff;
+  background: #4285f4;
+
 }
 
 @media screen and (max-width: 1279px) {
@@ -161,24 +160,13 @@
     width: 260px;
     font-size: 12px;
     line-height: 15px;
-    margin: 379px 0 0;
+    margin: 383px 0 0;
   }
 }
 
-.profile__save-button_enabled {
-  color: #fff;
-  background: #4285f4;
-}
-
-.profile__save-button_enabled:hover {
+.profile__save-button:hover {
   opacity: 0.7;
   cursor: pointer;
-}
-
-.profile__save-button_disabled {
-  box-sizing: border-box;
-  background: #f8f8f8;
-  color: #c2c2c2;
 }
 
 .profile__logout-link {
