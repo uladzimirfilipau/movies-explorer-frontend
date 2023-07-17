@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 767px) {
   .about-project {
-    padding: 70px 18px;
+    padding: 70px 18px 0;
   }
 }
 
