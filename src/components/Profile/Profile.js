@@ -1,36 +1,43 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
 function Profile({ handleUpdateUser, handleSignOut }) {
-  const { values, handleChange, isValid, resetForm } = useFormAndValidation();
   const currentUser = useContext(CurrentUserContext);
+
+  const inputElement = useRef(null);
+
+  const [disabled, setDisabled] = useState(true);
+  const [activeSaveButton, setActiveSaveButton] = useState(false);
+
+  const { values, handleChange, isValid, resetForm } = useFormAndValidation();
+
   let newData = currentUser.name !== values.name || currentUser.email !== values.email;
-  const saveButtonClassName = `profile__save-button ${
-    newData && isValid ? 'profile__save-button_enabled' : 'profile__save-button_disabled'
-  }`;
-  const editButtonClassName = `profile__edit-button ${
-    (!newData || !isValid) && 'profile__edit-button_disabled'
-  }`;
-  const [isSaveButton, setIsSaveButton] = useState(false);
 
   useEffect(() => {
     resetForm(currentUser, {}, true);
   }, [resetForm, currentUser]);
 
-  function handleEdit() {
-    if (isValid && newData) {
-      setIsSaveButton(true);
+  useEffect(() => {
+    if (activeSaveButton) {
+      inputElement.current.focus();
+      inputElement.current.select();
     }
+  }, [activeSaveButton]);
+
+  function handleEdit() {
+    setDisabled(false);
+    setActiveSaveButton(true);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (isValid && newData) {
       handleUpdateUser(values);
-      setIsSaveButton(false);
+      setActiveSaveButton(false);
+      setDisabled(true);
     }
   }
 
@@ -51,6 +58,8 @@ function Profile({ handleUpdateUser, handleSignOut }) {
           minLength='2'
           maxLength='30'
           required
+          ref={inputElement}
+          disabled={disabled}
         />
       </fieldset>
 
@@ -65,16 +74,17 @@ function Profile({ handleUpdateUser, handleSignOut }) {
           value={values.email || ''}
           onChange={handleChange}
           required
+          disabled={disabled}
         />
       </fieldset>
 
-      {isSaveButton && newData ? (
-        <button className={saveButtonClassName} type='submit'>
+      {activeSaveButton && newData ? (
+        <button className='profile__save-button' type='submit'>
           Сохранить
         </button>
       ) : (
         <>
-          <button className={editButtonClassName} type='button' onClick={handleEdit}>
+          <button className='profile__edit-button' type='button' onClick={handleEdit}>
             Редактировать
           </button>
           <Link to='/' className='profile__logout-link' onClick={handleSignOut}>
