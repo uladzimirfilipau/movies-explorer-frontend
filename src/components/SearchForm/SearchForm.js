@@ -13,7 +13,7 @@ function SearchForm({ handleChange, handleSubmit, searchTerm, checked, error, ha
           type='text'
           name='search'
           id='search'
-          placeholder='Фильм'
+          placeholder='Введите ключевое слово для поиска фильма'
           value={searchTerm}
           onChange={handleChange}
           aria-label='Введите ключевое слово для поиска фильма'
