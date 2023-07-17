@@ -2,7 +2,7 @@
   "name": "movies-explorer-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://movie-explorer-vova.netlify.app/",
+  "homepage": "https://movies-explorer-ulfi.netlify.app/",
   "devDependencies": {
     "react-scripts": "^5.0.1"
   },
