@@ -39,15 +39,16 @@
 .about__article {
   display: flex;
   justify-content: space-between;
-  padding: 66px 0 0;
+  padding: 66px 0;
   box-sizing: border-box;
+  border-bottom: 1px solid #dadada;
 }
 
 @media screen and (max-width: 767px) {
   .about__article {
     flex-direction: column-reverse;
     gap: 40px;
-    padding: 60px 0 0;
+    padding: 60px 0;
   }
 }
 
@@ -122,6 +123,10 @@
   }
 }
 
+.about__description-list {
+  padding: 0;
+  margin: 10px 0;
+}
 .about__links {
   list-style-type: none;
   margin: 99px 0 0;
@@ -140,7 +145,6 @@
 }
 
 .about__link {
-  text-decoration: none;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
