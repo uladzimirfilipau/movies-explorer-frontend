@@ -35,7 +35,7 @@ function Portfolio() {
         <li className='portfolio__link-container'>
           <a
             className='portfolio__link'
-            href='https://uladzimirfilipau.github.io/mesto/'
+            href='https://mesto-react-ulfi.netlify.app/'
             target='_blank'
             rel='noopener noreferrer'
           >
