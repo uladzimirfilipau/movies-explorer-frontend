@@ -4,6 +4,10 @@ import './MenuPopup.css';
 import closeButton from '../../images/close.svg';
 
 function MenuPopup({ isOpen, onClose }) {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <>
       <section className={`popup ${isOpen && 'popup_opened'}`}>
