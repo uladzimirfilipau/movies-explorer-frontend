@@ -2,6 +2,10 @@ import React from 'react';
 import './InfoTooltip.css';
 
 function InfoTooltip({ message, isOpen, onClose }) {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <section className={`info ${isOpen && 'info_opened'}`}>
       <div className='info__content'>
