@@ -28,7 +28,9 @@
   border-radius: 10px;
 
   display: grid;
+  gap: 20px;
   justify-content: center;
+  align-content: center;
 
   position: relative;
 }

@@ -31,6 +31,7 @@ import {
   SERVER_ERROR,
   AUTH_ERROR,
 } from '../../utils/consts';
+import LoadingModal from '../LoadingModal/LoadingModal';
 
 function App() {
   const history = useHistory();
@@ -46,6 +47,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -133,12 +135,15 @@ function App() {
   });
 
   function handleRegister({ email, password, name }) {
+    setIsLoading(true);
+
     api
       .register({ email, password, name })
       .then(() => {
         handleLogin({ email, password });
       })
       .catch((err) => {
+        setIsLoading(false);
         setIsInfoTooltipOpen(true);
         if (err.includes(409)) {
           setMessage(CONFLICT_ERR_MESSAGE);
@@ -151,6 +156,8 @@ function App() {
   }
 
   function handleLogin({ email, password }) {
+    setIsLoading(true);
+
     api
       .login({ email, password })
       .then(({ token }) => {
@@ -159,9 +166,11 @@ function App() {
           setLoggedIn(true);
           getUserData();
           history.push('/movies');
+          setIsLoading(false);
         }
       })
       .catch((err) => {
+        setIsLoading(false);
         setIsInfoTooltipOpen(true);
         if (err.includes(401)) {
           setMessage(WRONG_DATA_ERR_MESSAGE);
@@ -308,6 +317,7 @@ function App() {
 
         <MenuPopup isOpen={isMenuOpen} onClose={closeAllPopups} />
         <InfoTooltip message={message} isOpen={isInfoTooltipOpen} onClose={closeAllPopups} />
+        <LoadingModal loading={isLoading} />
       </CurrentUserContext.Provider>
     </>
   );
